@@ -1,0 +1,126 @@
+/** COLORS **/
+$dark: #121212;
+$white: #fff;
+$light: #c1c1c1;
+$blue: #0d6efd;
+$pink: #ff007a;
+
+$dark-1: lighten($dark, 2);
+$dark-2: lighten($dark, 4);
+$dark-3: lighten($dark, 6);
+
+/** THEME **/
+$primary: $blue;
+$secondary: $light;
+
+$primary-text-color: $white;
+$secondary-text-color: $secondary;
+
+$body-color: $secondary-text-color;
+$body-bg: $dark;
+
+$font-family-base: "Montserrat", sans-serif;
+
+$focus-box-shadow-opacity: 25%;
+
+$layout-bg-1: $dark-1;
+$layout-bg-2: $dark-2;
+$layout-bg-3: $dark-3;
+
+$border-color: $dark-3;
+$border-radius: 1rem;
+
+/** SPACERS **/
+$spacer: 1rem;
+$spacers: (
+  0: 0,
+  1: $spacer * 0.25,
+  2: $spacer * 0.5,
+  3: $spacer,
+  4: $spacer * 1.5,
+  5: $spacer * 3,
+);
+
+/** LAYOUT **/
+$layout-max-widths: (
+  sm: 540px,
+  md: 720px,
+  lg: 960px,
+  xl: 1140px,
+  xxl: 1320px
+);
+$layout-columns: 12;
+$layout-gutter: map-get($spacers, 3);
+$layout-column-gutter: $layout-gutter;
+$layout-row-gutter: $layout-gutter;
+$layout-breakpoints: (
+  xs: 0,
+  sm: 576px,
+  md: 768px,
+  lg: 992px,
+  xl: 1200px,
+  xxl: 1400px
+);
+
+/** FONT **/
+$font-size-base: 0.6rem;
+$h1-font-size: $font-size-base * 2.5;
+$h2-font-size: $font-size-base * 2;
+$h3-font-size: $font-size-base * 1.75;
+$h4-font-size: $font-size-base * 1.5;
+$h5-font-size: $font-size-base * 1.25;
+$h6-font-size: $font-size-base;
+
+/** COMPONENTS **/
+$aside-row-gutter: $layout-column-gutter;
+
+$btn-border-radius: 50rem;
+$btn-font-size: $font-size-base + 0.25rem;
+$btn-padding-y: $btn-font-size;
+$btn-padding-x: $btn-font-size * 2.5;
+$btn-padding-y-sm: $btn-padding-y / 2;
+$btn-padding-x-sm: $btn-padding-x / 2;
+$btn-padding-y-lg: $btn-padding-y * 1.5;
+$btn-padding-x-lg: $btn-padding-x * 1.5;
+$btn-text-color: $primary-text-color;
+$btn-transition: background-color 0.25s, opacity 0.25s, box-shadow 0.15s ease-in-out;
+$btn-colors: (
+  "primary": $primary,
+  "pink": $pink,
+);
+
+$card-background: $layout-bg-1;
+$card-spacer: 2rem;
+$card-spacer-x: $card-spacer;
+$card-spacer-y: $card-spacer;
+$card-title-spacer-y: $card-spacer / 1.5;
+
+$products-group-name-box-shadow: 0 0 0 0.2rem rgba($secondary-text-color, $focus-box-shadow-opacity);
+$products-group-name-text-color: $primary-text-color;
+$products-group-name-background: $layout-bg-1;
+$products-group-name-background-hover: $layout-bg-3;
+$products-group-name-background-active: $layout-bg-2;
+$products-group-name-spacer-x: $card-spacer-x;
+$products-group-name-spacer-y: $card-spacer-y / 2;
+$products-group-items-gutter: map-get($spacers, 2);
+
+$input-font-size: $btn-font-size;
+$input-border-radius: $btn-border-radius;
+$input-background: $layout-bg-2;
+$input-text-color: $secondary-text-color;
+$input-padding-y: $input-font-size / 2;
+$input-padding-x: $input-padding-y * 2;
+$input-focus-box-shadow: 0 0 0 0.2rem rgba($input-text-color, $focus-box-shadow-opacity);
+$input-transition: box-shadow 0.15s ease-in-out;
+
+$select-background: $layout-bg-2;
+$select-border-radius: $btn-border-radius;
+$select-font-size: $input-font-size;
+$select-text-color: $secondary-text-color;
+$select-focus-box-shadow: 0 0 0 0.2rem rgba($select-text-color, $focus-box-shadow-opacity);
+$select-padding-y: $input-padding-y;
+$select-padding-x: $input-padding-x;
+$select-transition: $input-transition;
+
+$table-row-spacer: map-get($spacers, 3);
+$table-col-spacer: map-get($spacers, 2);

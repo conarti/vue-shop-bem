@@ -1,4 +1,5 @@
 ## vue-shop-bem
+Vue shop using BEM style methodology and firebase.
 ### Layout design
 [github.com/conarti/shop-layout-design](https://github.com/conarti/shop-layout-design.git)
 
