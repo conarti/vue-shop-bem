@@ -5,12 +5,22 @@ const apiEndpoints = {
   groups: '/groups.json',
 };
 
+// eslint-disable-next-line consistent-return
+const fetch = async (endpoint) => {
+  try {
+    const response = await api.get(endpoint);
+    return response.data;
+  } catch (e) {
+    console.error(e);
+  }
+};
+
 export default class Products {
   static async fetchProducts() {
-    return api.get(apiEndpoints.products);
+    return fetch(apiEndpoints.products);
   }
 
   static async fetchGroups() {
-    return api.get(apiEndpoints.groups);
+    return fetch(apiEndpoints.groups);
   }
 }
