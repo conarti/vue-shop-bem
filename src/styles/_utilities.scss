@@ -1,7 +1,11 @@
 .mb-3 {
-  margin-bottom: map-get($spacers, 3);
+  margin-bottom: map-get($spacers, 3) !important;
 }
 
 .text-white {
-  color: $white;
+  color: $white !important;
+}
+
+.text-end {
+  text-align: end !important;
 }

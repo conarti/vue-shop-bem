@@ -1,5 +1,5 @@
 <template>
-  <app-card :title="$t('section.products.title')">
+  <app-card :title="$t('sections.products.title')">
     <AppLoading v-if="isProductsNotLoaded" />
     <div
       v-else

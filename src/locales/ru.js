@@ -1,7 +1,16 @@
 export default {
-  section: {
+  sections: {
     products: {
       title: 'Список товаров',
+    },
+    cart: {
+      title: 'Корзина',
+      columnTitles: {
+        product: 'Товар',
+        count: 'Кол-во',
+        price: 'Цена за шт.',
+      },
+      total: 'Итого',
     },
   },
   productsList: {
