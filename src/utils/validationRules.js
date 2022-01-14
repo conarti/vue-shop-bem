@@ -9,6 +9,9 @@ const validationRules = {
       'h6',
     ],
   },
+  button: {
+    colors: ['pink'],
+  },
 };
 
 export default validationRules;

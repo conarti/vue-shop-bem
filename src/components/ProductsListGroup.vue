@@ -16,17 +16,26 @@
     <transition name="fade">
       <div
         v-if="isShowed"
-        class="products-list__group-items"
+        class="products-list__group-products"
       >
-        {{ groupProducts }}
+        <ProductsListGroupProduct
+          v-for="product in groupProducts"
+          :key="product.id"
+          :product="product"
+        />
       </div>
     </transition>
   </div>
 </template>
 
 <script>
+import ProductsListGroupProduct from '@/components/ProductsListGroupProduct.vue';
+
 export default {
   name: 'ProductsListGroup',
+  components: {
+    ProductsListGroupProduct,
+  },
   props: {
     group: {
       type: Array,

@@ -40,9 +40,10 @@
     }
   }
 
-  &__group-items {
+  &__group-products {
     display: grid;
     grid-template-columns: 1fr;
+    align-items: start;
     gap: $products-group-items-gutter;
 
     @include media-breakpoint-up(md) {

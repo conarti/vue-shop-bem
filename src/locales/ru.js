@@ -4,4 +4,11 @@ export default {
       title: 'Список товаров',
     },
   },
+  productsList: {
+    product: {
+      balance: 'Остаток',
+      price: 'Стоимость',
+      buyBtn: 'Купить',
+    },
+  },
 };
