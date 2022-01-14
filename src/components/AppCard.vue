@@ -14,7 +14,7 @@
 </template>
 
 <script>
-import { validationRules } from '@/utils';
+import validationRules from '@/utils/validationRules';
 
 export default {
   name: 'AppCard',

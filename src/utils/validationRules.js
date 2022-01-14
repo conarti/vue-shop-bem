@@ -11,4 +11,4 @@ const validationRules = {
   },
 };
 
-export { validationRules };
+export default validationRules;
