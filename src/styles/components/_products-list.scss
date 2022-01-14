@@ -56,9 +56,5 @@
     @include media-breakpoint-up(xl) {
       grid-template-columns: repeat(2, 1fr);
     }
-
-    &--collapsed {
-      display: none;
-    }
   }
 }

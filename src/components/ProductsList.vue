@@ -5,8 +5,11 @@
       v-else
       class="products-list"
     >
-      {{ products }}
-      <ProductsListGroup />
+      <ProductsListGroup
+        v-for="group in groups"
+        :key="group.id"
+        :group="group"
+      />
     </div>
   </app-card>
 </template>
@@ -27,13 +30,13 @@ export default {
     isProductsNotLoaded() {
       return !this.$store.getters['products/isLoaded'];
     },
-    products() {
-      return this.$store.getters['products/all'];
+    groups() {
+      return this.$store.getters['products/groups'];
     },
   },
-  created() {
+  mounted() {
     if (this.isProductsNotLoaded) {
-      this.$store.dispatch('products/fetchProducts');
+      this.$store.dispatch('products/fetchAll');
     }
   },
 };
