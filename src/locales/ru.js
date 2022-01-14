@@ -1,5 +1,7 @@
 export default {
-  message: {
-    hello: 'hello world',
+  section: {
+    products: {
+      title: 'Список товаров',
+    },
   },
 };
