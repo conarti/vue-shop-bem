@@ -1,24 +1,23 @@
-# vue-shop-bem
+## vue-shop-bem
+### Layout design
+[github.com/conarti/shop-layout-design](https://github.com/conarti/shop-layout-design.git)
 
 ## Project setup
 ```
-npm install
+make install
 ```
 
 ### Compiles and hot-reloads for development
 ```
-npm run serve
+make serve
 ```
 
 ### Compiles and minifies for production
 ```
-npm run build
+make build
 ```
 
 ### Lints and fixes files
 ```
-npm run lint
+make lint
 ```
-
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
