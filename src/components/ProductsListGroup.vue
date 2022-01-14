@@ -13,18 +13,16 @@
         {{ buttonIconSymbol }}
       </span>
     </button>
-    <transition name="fade">
-      <div
-        v-if="isShowed"
-        class="products-list__group-products"
-      >
-        <ProductsListGroupProduct
-          v-for="product in groupProducts"
-          :key="product.id"
-          :product="product"
-        />
-      </div>
-    </transition>
+    <div
+      v-if="isShowed"
+      class="products-list__group-products"
+    >
+      <ProductsListGroupProduct
+        v-for="product in groupProducts"
+        :key="product.id"
+        :product="product"
+      />
+    </div>
   </div>
 </template>
 
