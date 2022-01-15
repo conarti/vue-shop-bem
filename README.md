@@ -2,6 +2,8 @@
 Vue shop using BEM style methodology, firebase and i18n.
 ### Layout design
 [github.com/conarti/shop-layout-design](https://github.com/conarti/shop-layout-design.git)
+### Deploy
+[vue-shop-bem.vercel.app](https://vue-shop-bem.vercel.app/)
 
 ## Project setup
 ```
