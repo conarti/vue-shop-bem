@@ -5,12 +5,12 @@
       colorClass,
       {
         'button--fill': isFill,
-        'button--icon': isIcon,
+        'button--icon': hasIcon,
       }
     ]"
   >
     {{ text }}
-    <template v-if="isIcon">
+    <template v-if="hasIcon">
       <component :is="iconComponent" />
     </template>
   </button>
@@ -59,7 +59,7 @@ export default {
     colorClass() {
       return `button--${this.color}`;
     },
-    isIcon() {
+    hasIcon() {
       return this.icon !== null;
     },
     iconComponent() {
