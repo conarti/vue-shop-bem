@@ -5,10 +5,12 @@
       colorClass,
       {
         'button--fill': isFill,
+        'button--icon': isIcon,
       }
     ]"
   >
     {{ text }}
+    <slot name="icon" />
   </button>
 </template>
 
@@ -20,7 +22,8 @@ export default {
   props: {
     text: {
       type: String,
-      required: true,
+      required: false,
+      default: null,
     },
     color: {
       type: String,
@@ -31,6 +34,11 @@ export default {
       },
     },
     isFill: {
+      type: Boolean,
+      required: false,
+      default: false,
+    },
+    isIcon: {
       type: Boolean,
       required: false,
       default: false,
