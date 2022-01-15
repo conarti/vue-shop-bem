@@ -17,7 +17,7 @@
         </tr>
       </thead>
       <tbody>
-        <ProductsCartItem
+        <ProductsCartProduct
           v-for="product in products"
           :key="product.id"
           :product="product"
@@ -46,14 +46,14 @@
 <script>
 import AppCard from '@/components/AppCard.vue';
 import AppLoading from '@/components/AppLoading.vue';
-import ProductsCartItem from '@/components/ProductsCartItem.vue';
+import ProductsCartProduct from '@/components/ProductsCartProduct.vue';
 
 export default {
   name: 'ProductsCart',
   components: {
     AppCard,
     AppLoading,
-    ProductsCartItem,
+    ProductsCartProduct,
   },
   data() {
     return {

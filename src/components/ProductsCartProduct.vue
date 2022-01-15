@@ -4,9 +4,12 @@
       {{ productData.name }}
     </td>
     <td class="table__cell">
+      <!--FIXME: prop value not update DOM value (visual)-->
       <AppInput
         class="maxw-50px text-center"
         type="number"
+        :min="1"
+        :max="productMaxCount"
         :value="product.count"
         @value-changed="updateProductCountInCart($event)"
       />
@@ -29,7 +32,7 @@ import AppButton from '@/components/AppButton.vue';
 import AppInput from '@/components/AppInput.vue';
 
 export default {
-  name: 'ProductsCartItem',
+  name: 'ProductsCartProduct',
   components: {
     AppButton,
     AppInput,
@@ -46,6 +49,9 @@ export default {
     },
     productData() {
       return this.$store.getters['products/getProductById'](this.productId);
+    },
+    productMaxCount() {
+      return this.productData.count;
     },
   },
   methods: {
