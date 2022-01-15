@@ -34,5 +34,9 @@ export default {
       const cartProduct = state.products.find((product) => product.id === id);
       cartProduct.count = count;
     },
+    removeProduct(state, id) {
+      const cartProductIdx = state.products.findIndex((product) => product.id === id);
+      state.products.splice(cartProductIdx, 1);
+    },
   },
 };

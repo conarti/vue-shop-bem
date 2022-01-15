@@ -18,6 +18,7 @@
       <AppButton
         color="pink"
         icon="close"
+        @click="removeProductFromCart"
       />
     </td>
   </tr>
@@ -40,17 +41,22 @@ export default {
     },
   },
   computed: {
+    productId() {
+      return this.product.id;
+    },
     productData() {
-      const productId = this.product.id;
-      return this.$store.getters['products/getProductById'](productId);
+      return this.$store.getters['products/getProductById'](this.productId);
     },
   },
   methods: {
     updateProductCountInCart(count) {
       this.$store.commit('cart/setProductCount', {
-        id: this.product.id,
+        id: this.productId,
         count,
       });
+    },
+    removeProductFromCart() {
+      this.$store.commit('cart/removeProduct', this.productId);
     },
   },
 };
