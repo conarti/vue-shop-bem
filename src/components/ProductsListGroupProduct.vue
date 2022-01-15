@@ -4,7 +4,7 @@
     :title="product.name"
   >
     <p class="mb-3">
-      {{ $t('productsList.product.count') }}:
+      {{ $t('productsList.product.countMessage') }}:
       <span class="text-white">{{ productCount }}</span>
       <br>
       {{ $t('productsList.product.price') }}
@@ -45,7 +45,10 @@ export default {
     },
     productCount() {
       const cartCount = this.$store.getters['cart/getProductCount'](this.productId);
-      return this.product.count - cartCount;
+      const rest = this.product.count - cartCount;
+      return this.$t('productsList.product.count', {
+        rest,
+      });
     },
   },
   methods: {

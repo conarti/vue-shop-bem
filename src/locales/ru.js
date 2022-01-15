@@ -19,7 +19,8 @@ export default {
   },
   productsList: {
     product: {
-      count: 'Остаток',
+      countMessage: 'Остаток',
+      count: '{rest} шт.',
       price: 'Стоимость',
       buyBtn: 'Купить',
     },
