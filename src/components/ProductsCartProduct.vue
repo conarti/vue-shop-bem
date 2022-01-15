@@ -4,7 +4,6 @@
       {{ productData.name }}
     </td>
     <td class="table__cell">
-      <!--FIXME: prop value not update DOM value (visual)-->
       <AppInput
         class="maxw-50px text-center"
         type="number"
