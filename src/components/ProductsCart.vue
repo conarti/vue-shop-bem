@@ -1,6 +1,10 @@
 <template>
   <app-card :title="$t('sections.cart.title')">
     <AppLoading v-if="!isProductsLoaded" />
+    <AppEmpty
+      v-else-if="isEmpty"
+      :message="$t('sections.cart.emptyMessage')"
+    />
     <app-table
       v-else
       :header-cells="columnTitles"
@@ -35,6 +39,7 @@
 
 <script>
 import AppCard from '@/components/AppCard.vue';
+import AppEmpty from '@/components/AppEmpty.vue';
 import AppLoading from '@/components/AppLoading.vue';
 import AppTable from '@/components/AppTable.vue';
 import AppTableRow from '@/components/AppTableRow.vue';
@@ -45,6 +50,7 @@ export default {
   name: 'ProductsCart',
   components: {
     AppCard,
+    AppEmpty,
     AppLoading,
     AppTable,
     AppTableRow,
@@ -69,6 +75,9 @@ export default {
     },
     products() {
       return this.$store.getters['cart/products'];
+    },
+    isEmpty() {
+      return this.products.length === 0;
     },
   },
 };

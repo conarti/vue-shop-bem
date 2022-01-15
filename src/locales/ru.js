@@ -11,6 +11,7 @@ export default {
         price: 'Цена за шт.',
       },
       total: 'Итого',
+      emptyMessage: 'Добавьте товары в корзину',
     },
   },
   productsList: {
@@ -19,5 +20,8 @@ export default {
       price: 'Стоимость',
       buyBtn: 'Купить',
     },
+  },
+  empty: {
+    defaultMessage: 'Здесь ничего нет :(',
   },
 };
