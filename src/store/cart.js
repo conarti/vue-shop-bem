@@ -24,6 +24,8 @@ export default {
       }
       return null;
     },
+    isHaveProduct: (state) => (id) => state.products
+      .find((product) => product.id === id) ?? false,
   },
   mutations: {
     setProducts(state, payload) {
@@ -37,6 +39,13 @@ export default {
     removeProduct(state, id) {
       const cartProductIdx = state.products.findIndex((product) => product.id === id);
       state.products.splice(cartProductIdx, 1);
+    },
+    addProduct(state, id) {
+      const product = {
+        id,
+        count: 1,
+      };
+      state.products.push(product);
     },
   },
 };

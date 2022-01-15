@@ -14,6 +14,8 @@
       color="pink"
       is-fill
       :text="$t('productsList.product.buyBtn')"
+      :disabled="isAddedToCart"
+      @click="addToCart"
     />
   </app-card>
 </template>
@@ -32,6 +34,22 @@ export default {
     product: {
       type: Array,
       required: true,
+    },
+  },
+  computed: {
+    productId() {
+      return this.product.id;
+    },
+    isAddedToCart() {
+      return this.$store.getters['cart/isHaveProduct'](this.productId);
+    },
+  },
+  methods: {
+    addToCart() {
+      if (this.isAddedToCart) {
+        return;
+      }
+      this.$store.commit('cart/addProduct', this.productId);
     },
   },
 };
