@@ -1,11 +1,11 @@
-import LocalStorageService from '../services/LocalStorageService';
+import LocalStorage from '../services/LocalStorage';
 
 const CART_PRODUCTS_KEY = 'vue-shop-cart-products';
 
 export default {
   namespaced: true,
   state: {
-    products: LocalStorageService.get(CART_PRODUCTS_KEY) ?? [],
+    products: LocalStorage.get(CART_PRODUCTS_KEY) ?? [],
   },
   getters: {
     products: (state) => state.products,
@@ -33,18 +33,18 @@ export default {
   mutations: {
     setProducts(state, payload) {
       state.products = payload;
-      LocalStorageService.set(CART_PRODUCTS_KEY, state.products);
+      LocalStorage.set(CART_PRODUCTS_KEY, state.products);
     },
     setProductCount(state, payload) {
       const { id, count } = payload;
       const cartProduct = state.products.find((product) => product.id === id);
       cartProduct.count = count;
-      LocalStorageService.set(CART_PRODUCTS_KEY, state.products);
+      LocalStorage.set(CART_PRODUCTS_KEY, state.products);
     },
     removeProduct(state, id) {
       const cartProductIdx = state.products.findIndex((product) => product.id === id);
       state.products.splice(cartProductIdx, 1);
-      LocalStorageService.set(CART_PRODUCTS_KEY, state.products);
+      LocalStorage.set(CART_PRODUCTS_KEY, state.products);
     },
     addProduct(state, id) {
       const product = {
@@ -52,7 +52,7 @@ export default {
         count: 1,
       };
       state.products.push(product);
-      LocalStorageService.set(CART_PRODUCTS_KEY, state.products);
+      LocalStorage.set(CART_PRODUCTS_KEY, state.products);
     },
   },
 };
