@@ -26,6 +26,14 @@ export default {
     },
     isHaveProduct: (state) => (id) => state.products
       .find((product) => product.id === id) ?? false,
+    getProductCount: (state) => (id) => {
+      const product = state.products
+        .find((cartProduct) => cartProduct.id === id);
+      if (product) {
+        return product.count;
+      }
+      return 0;
+    },
   },
   mutations: {
     setProducts(state, payload) {

@@ -13,6 +13,10 @@ export default {
     getGroupProducts: (state) => (groupId) => state.products
       .filter((product) => product.group === groupId),
     getProductById: (state) => (id) => state.products.find((product) => product.id === id),
+    getProductCount: (state, getters) => (id) => {
+      const product = getters.getProductById(id);
+      return product.count;
+    },
   },
   mutations: {
     setProducts(state, payload) {

@@ -15,7 +15,7 @@ export default {
   },
   productsList: {
     product: {
-      balance: 'Остаток',
+      count: 'Остаток',
       price: 'Стоимость',
       buyBtn: 'Купить',
     },

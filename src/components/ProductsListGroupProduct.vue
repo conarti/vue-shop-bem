@@ -4,8 +4,8 @@
     :title="product.name"
   >
     <p class="mb-3">
-      {{ $t('productsList.product.balance') }}:
-      <span class="text-white">{{ product.count }}</span>
+      {{ $t('productsList.product.count') }}:
+      <span class="text-white">{{ productCount }}</span>
       <br>
       {{ $t('productsList.product.price') }}
       <span class="text-white">{{ product.price }}</span>
@@ -42,6 +42,10 @@ export default {
     },
     isAddedToCart() {
       return this.$store.getters['cart/isHaveProduct'](this.productId);
+    },
+    productCount() {
+      const cartCount = this.$store.getters['cart/getProductCount'](this.productId);
+      return this.product.count - cartCount;
     },
   },
   methods: {
