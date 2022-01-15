@@ -1,6 +1,6 @@
 <template>
   <app-card :title="$t('sections.cart.title')">
-    <AppLoading v-if="!isProductsLoaded" />
+    <AppLoading v-if="isProductsNotLoaded" />
     <AppEmpty
       v-else-if="isEmpty"
       :message="$t('sections.cart.emptyMessage')"
@@ -67,8 +67,8 @@ export default {
     };
   },
   computed: {
-    isProductsLoaded() {
-      return this.$store.getters['products/isLoaded'];
+    isProductsNotLoaded() {
+      return !this.$store.getters['products/isLoaded'];
     },
     totalCount() {
       return this.$store.getters['cart/totalCount'];
