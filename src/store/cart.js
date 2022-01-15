@@ -1,4 +1,5 @@
 import LocalStorage from '../services/LocalStorage';
+import Money from '../services/Money';
 
 const CART_PRODUCTS_KEY = 'vue-shop-cart-products';
 
@@ -10,12 +11,14 @@ export default {
   getters: {
     products: (state) => state.products,
     totalCount: (state, _, __, rootGetters) => {
+      const currentCurrency = rootGetters['currency/current'];
       if (rootGetters['products/isLoaded']) {
-        return state.products.reduce((acc, { id, count }) => {
+        const totalSum = state.products.reduce((acc, { id, count }) => {
           const product = rootGetters['products/getProductById'](id);
-          const sum = product.price * count;
+          const sum = product.price.value * count;
           return acc + sum;
         }, 0);
+        return new Money(totalSum, currentCurrency);
       }
       return null;
     },
