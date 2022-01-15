@@ -1,5 +1,5 @@
 import { createStore } from 'vuex';
-import cart from '@/store/cart';
+import cart from './cart';
 import products from './products';
 
 export default createStore({
