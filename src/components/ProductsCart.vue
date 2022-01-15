@@ -1,51 +1,44 @@
 <template>
   <app-card :title="$t('sections.cart.title')">
     <AppLoading v-if="!isProductsLoaded" />
-    <table
+    <app-table
       v-else
-      class="table"
+      :header-cells="columnTitles"
     >
-      <thead class="table__header">
-        <tr class="table__row">
-          <th
-            v-for="(columnTitle, idx) in columnTitles"
-            :key="idx"
-            class="table__cell table__cell--header"
-          >
-            {{ columnTitle }}
-          </th>
-        </tr>
-      </thead>
-      <tbody>
+      <template #tbody>
         <ProductsCartProduct
           v-for="product in products"
           :key="product.id"
           :product="product"
         />
-      </tbody>
-      <tfoot class="table__footer">
-        <tr class="table__row">
-          <td
-            class="table__cell table__cell--footer"
+      </template>
+      <template #tfoot>
+        <app-table-row>
+          <app-table-row-cell
+            is-footer-cell
             colspan="1"
           >
             {{ $t('sections.cart.total') }}
-          </td>
-          <td
-            class="table__cell table__cell--footer text-end"
+          </app-table-row-cell>
+          <app-table-row-cell
+            class="text-end"
+            is-footer-cell
             colspan="3"
           >
             {{ totalCount }}
-          </td>
-        </tr>
-      </tfoot>
-    </table>
+          </app-table-row-cell>
+        </app-table-row>
+      </template>
+    </app-table>
   </app-card>
 </template>
 
 <script>
 import AppCard from '@/components/AppCard.vue';
 import AppLoading from '@/components/AppLoading.vue';
+import AppTable from '@/components/AppTable.vue';
+import AppTableRow from '@/components/AppTableRow.vue';
+import AppTableRowCell from '@/components/AppTableRowCell.vue';
 import ProductsCartProduct from '@/components/ProductsCartProduct.vue';
 
 export default {
@@ -53,6 +46,9 @@ export default {
   components: {
     AppCard,
     AppLoading,
+    AppTable,
+    AppTableRow,
+    AppTableRowCell,
     ProductsCartProduct,
   },
   data() {
