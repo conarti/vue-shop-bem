@@ -1,4 +1,6 @@
 export default class Money {
+  static defaultApiCurrency = 'usd'
+
   static rates = {
     usd: {
       rub: 72,
@@ -15,8 +17,6 @@ export default class Money {
   static isValidCurrency(currency) {
     return this.getCurrencies().includes(currency);
   }
-
-  static defaultApiCurrency = 'usd'
 
   constructor(value, currency) {
     this.value = value;
