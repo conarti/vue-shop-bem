@@ -1,4 +1,4 @@
-import ProductService from '../services/ProductService';
+import Products from '../services/Products';
 
 export default {
   namespaced: true,
@@ -28,11 +28,11 @@ export default {
   },
   actions: {
     async fetchProducts({ commit }) {
-      const products = await ProductService.fetchProducts();
+      const products = await Products.fetchProducts();
       commit('setProducts', products);
     },
     async fetchGroups({ commit }) {
-      const groups = await ProductService.fetchGroups();
+      const groups = await Products.fetchGroups();
       commit('setGroups', groups);
     },
     async fetchAll({ dispatch }) {

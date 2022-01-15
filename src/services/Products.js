@@ -1,4 +1,5 @@
 import api from './api';
+import Money from './Money';
 
 const apiEndpoints = {
   products: '/products.json',
@@ -15,9 +16,13 @@ const fetch = async (endpoint) => {
   }
 };
 
-export default class ProductService {
+export default class Products {
   static async fetchProducts() {
-    return fetch(apiEndpoints.products);
+    const products = await fetch(apiEndpoints.products);
+    return products.map((product) => ({
+      ...product,
+      price: new Money(product.price, 'usd'),
+    }));
   }
 
   static async fetchGroups() {

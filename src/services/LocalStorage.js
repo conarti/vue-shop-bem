@@ -1,4 +1,4 @@
-export default class LocalStorageService {
+export default class LocalStorage {
   static get(key) {
     return JSON.parse(localStorage.getItem(key));
   }
