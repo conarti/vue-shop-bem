@@ -13,6 +13,9 @@ const params = {
     colors: ['pink'],
     icons: ['close'],
   },
+  select: {
+    optionKeys: ['text', 'value'],
+  },
   cartProductsLocalStorageKey: 'cart-products',
 };
 

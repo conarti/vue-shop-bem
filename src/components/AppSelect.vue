@@ -14,7 +14,8 @@
 </template>
 
 <script>
-import has from '@/utils/has';
+import hasKeys from '../utils/hasKeys';
+import params from '../utils/params';
 
 export default {
   name: 'AppSelect',
@@ -23,14 +24,13 @@ export default {
       type: Array,
       required: true,
       validator(value) {
-        return value.reduce((acc, option) => {
-          const isCorrectOption = has(option, 'value') && has(option, 'text');
-          return acc !== false && isCorrectOption;
-        }, true);
+        return value.every((option) => hasKeys(option, params.select.optionKeys));
       },
     },
   },
-  emits: ['update-value'],
+  emits: {
+    'update-value': (value) => typeof value === 'string',
+  },
   methods: {
     updateValue(event) {
       this.$emit('update-value', event.target.value);
