@@ -15,7 +15,7 @@ const fetch = async (endpoint) => {
   }
 };
 
-export default class Products {
+export default class ProductService {
   static async fetchProducts() {
     return fetch(apiEndpoints.products);
   }
