@@ -11,7 +11,7 @@
     >
       <template #tbody>
         <ProductsCartProduct
-          v-for="product in products"
+          v-for="product in cartProducts"
           :key="product.id"
           :product="product"
         />
@@ -73,11 +73,11 @@ export default {
     totalCount() {
       return this.$store.getters['cart/totalCount'];
     },
-    products() {
+    cartProducts() {
       return this.$store.getters['cart/products'];
     },
     isEmpty() {
-      return this.products.length === 0;
+      return this.cartProducts.length === 0;
     },
   },
 };
