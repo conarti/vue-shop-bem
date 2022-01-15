@@ -14,12 +14,16 @@ export default {
   },
   getters: {
     products: (state) => state.products,
-    totalCount: (state, _, __, rootGetters) => state.products
-      .reduce((acc, { id, count }) => {
-        const product = rootGetters['products/getProductById'](id);
-        const sum = product.price * count;
-        return acc + sum;
-      }, 0),
+    totalCount: (state, _, __, rootGetters) => {
+      if (rootGetters['products/isLoaded']) {
+        return state.products.reduce((acc, { id, count }) => {
+          const product = rootGetters['products/getProductById'](id);
+          const sum = product.price * count;
+          return acc + sum;
+        }, 0);
+      }
+      return null;
+    },
   },
   mutations: {
     setProducts(state, payload) {
