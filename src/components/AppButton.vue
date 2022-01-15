@@ -18,7 +18,7 @@
 
 <script>
 import CloseIcon from '@/components/icons/CloseIcon.vue';
-import validationRules from '@/utils/validationRules';
+import params from '@/utils/params';
 import { capitalize } from 'vue';
 
 export default {
@@ -36,7 +36,7 @@ export default {
       type: String,
       required: true,
       validator(value) {
-        const { colors } = validationRules.button;
+        const { colors } = params.button;
         return colors.includes(value);
       },
     },
@@ -50,7 +50,7 @@ export default {
       required: false,
       default: null,
       validator(value) {
-        const { icons } = validationRules.button;
+        const { icons } = params.button;
         return icons.includes(value);
       },
     },

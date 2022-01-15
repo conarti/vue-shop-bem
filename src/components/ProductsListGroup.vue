@@ -1,6 +1,6 @@
 <template>
   <div
-    v-if="isHaveProducts"
+    v-if="hasProducts"
     class="products-list__group"
   >
     <button
@@ -55,7 +55,7 @@ export default {
     isShowed() {
       return this.showed;
     },
-    isHaveProducts() {
+    hasProducts() {
       return this.groupProducts.length > 0;
     },
   },

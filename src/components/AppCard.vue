@@ -14,7 +14,7 @@
 </template>
 
 <script>
-import validationRules from '@/utils/validationRules';
+import params from '@/utils/params';
 
 export default {
   name: 'AppCard',
@@ -29,7 +29,7 @@ export default {
       required: false,
       default: 'h2',
       validator(value) {
-        const componentTypes = validationRules.card.titleComponents;
+        const componentTypes = params.card.titleComponents;
         return componentTypes.includes(value);
       },
     },

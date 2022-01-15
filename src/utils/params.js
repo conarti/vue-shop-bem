@@ -1,4 +1,4 @@
-const validationRules = {
+const params = {
   card: {
     titleComponents: [
       'h1',
@@ -13,6 +13,7 @@ const validationRules = {
     colors: ['pink'],
     icons: ['close'],
   },
+  cartProductsLocalStorageKey: 'cart-products',
 };
 
-export default validationRules;
+export default params;

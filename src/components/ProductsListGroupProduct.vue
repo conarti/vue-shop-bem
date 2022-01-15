@@ -41,14 +41,12 @@ export default {
       return this.product.id;
     },
     isAddedToCart() {
-      return this.$store.getters['cart/isHaveProduct'](this.productId);
+      return this.$store.getters['cart/hasProduct'](this.productId);
     },
     productCount() {
       const cartCount = this.$store.getters['cart/getProductCount'](this.productId);
       const rest = this.product.count - cartCount;
-      return this.$t('productsList.product.count', {
-        rest,
-      });
+      return this.$t('productsList.product.count', { rest });
     },
   },
   methods: {

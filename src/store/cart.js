@@ -1,61 +1,41 @@
-import LocalStorage from '../services/LocalStorage';
-import Money from '../services/Money';
-
-const CART_PRODUCTS_KEY = 'vue-shop-cart-products';
+import Cart from '../services/Cart';
 
 export default {
   namespaced: true,
   state: {
-    products: LocalStorage.get(CART_PRODUCTS_KEY) ?? [],
+    products: Cart.getFromStorage() ?? [],
   },
   getters: {
     products: (state) => state.products,
-    totalCount: (state, _, __, rootGetters) => {
+    hasProduct: (state) => (id) => Cart.hasProduct(id, state.products),
+    totalCount: (state, getters, rootState, rootGetters) => {
+      const isProductsNotLoaded = !rootGetters['products/isLoaded'];
+      if (isProductsNotLoaded) {
+        throw new Error('totalCount: product not loaded');
+      }
+      const cartProducts = state.products;
+      const productsData = rootGetters['products/products'];
       const currentCurrency = rootGetters['currency/current'];
-      if (rootGetters['products/isLoaded']) {
-        const totalSum = state.products.reduce((acc, { id, count }) => {
-          const product = rootGetters['products/getProductById'](id);
-          const sum = product.price.value * count;
-          return acc + sum;
-        }, 0);
-        return new Money(totalSum, currentCurrency);
-      }
-      return null;
+      return Cart.calculateTotalSum(cartProducts, productsData, currentCurrency);
     },
-    isHaveProduct: (state) => (id) => state.products
-      .find((product) => product.id === id) ?? false,
-    getProductCount: (state) => (id) => {
-      const product = state.products
-        .find((cartProduct) => cartProduct.id === id);
-      if (product) {
-        return product.count;
-      }
-      return 0;
-    },
+    getProductCount: (state) => (id) => Cart.getProductCount(id, state.products),
   },
   mutations: {
-    setProducts(state, payload) {
+    setProducts: (state, payload) => {
       state.products = payload;
-      LocalStorage.set(CART_PRODUCTS_KEY, state.products);
+      Cart.saveToStorage(payload);
     },
-    setProductCount(state, payload) {
-      const { id, count } = payload;
-      const cartProduct = state.products.find((product) => product.id === id);
-      cartProduct.count = count;
-      LocalStorage.set(CART_PRODUCTS_KEY, state.products);
+    setProductCount: (state, { id, count }) => {
+      state.products = Cart.updateProduct({ id, count }, state.products);
+      Cart.saveToStorage(state.products);
     },
-    removeProduct(state, id) {
-      const cartProductIdx = state.products.findIndex((product) => product.id === id);
-      state.products.splice(cartProductIdx, 1);
-      LocalStorage.set(CART_PRODUCTS_KEY, state.products);
+    removeProduct: (state, id) => {
+      state.products = Cart.removeProduct(id, state.products);
+      Cart.saveToStorage(state.products);
     },
-    addProduct(state, id) {
-      const product = {
-        id,
-        count: 1,
-      };
-      state.products.push(product);
-      LocalStorage.set(CART_PRODUCTS_KEY, state.products);
+    addProduct: (state, id) => {
+      state.products = Cart.addProduct(id, state.products);
+      Cart.saveToStorage(state.products);
     },
   },
 };
