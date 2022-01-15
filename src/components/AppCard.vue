@@ -30,7 +30,7 @@ export default {
       default: 'h2',
       validator(value) {
         const componentTypes = validationRules.card.titleComponents;
-        componentTypes.includes(value);
+        return componentTypes.includes(value);
       },
     },
   },

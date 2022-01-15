@@ -32,7 +32,7 @@ export default {
   },
   props: {
     product: {
-      type: Array,
+      type: Object,
       required: true,
     },
   },

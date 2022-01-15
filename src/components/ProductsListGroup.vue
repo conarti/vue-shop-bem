@@ -36,7 +36,7 @@ export default {
   },
   props: {
     group: {
-      type: Array,
+      type: Object,
       required: true,
     },
   },
