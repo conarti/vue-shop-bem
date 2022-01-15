@@ -14,7 +14,7 @@
 </template>
 
 <script>
-import params from '@/utils/params';
+import params from '../utils/params';
 
 export default {
   name: 'AppCard',
