@@ -39,6 +39,9 @@ export default {
       const isNumberType = this.type.toLowerCase() === 'number';
       let { value } = event.target;
       if (isNumberType) {
+        if (typeof value === 'string') {
+          value = this.min;
+        }
         if (value < this.min) {
           value = this.min;
         }
