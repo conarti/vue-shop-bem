@@ -15,14 +15,10 @@
       {{ productData.price }}
     </td>
     <td class="table__cell">
-      <app-button
+      <AppButton
         color="pink"
-        is-icon
-      >
-        <template #icon>
-          <CloseIcon />
-        </template>
-      </app-button>
+        icon="close"
+      />
     </td>
   </tr>
 </template>
@@ -30,14 +26,12 @@
 <script>
 import AppButton from '@/components/AppButton.vue';
 import AppInput from '@/components/AppInput.vue';
-import CloseIcon from '@/components/icons/CloseIcon.vue';
 
 export default {
   name: 'ProductsCartItem',
   components: {
     AppButton,
     AppInput,
-    CloseIcon,
   },
   props: {
     product: {

@@ -11,6 +11,7 @@ const validationRules = {
   },
   button: {
     colors: ['pink'],
+    icons: ['close'],
   },
 };
 

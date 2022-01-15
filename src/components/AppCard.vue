@@ -28,7 +28,7 @@ export default {
       type: String,
       required: false,
       default: 'h2',
-      validate(value) {
+      validator(value) {
         const componentTypes = validationRules.card.titleComponents;
         componentTypes.includes(value);
       },

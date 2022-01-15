@@ -10,15 +10,22 @@
     ]"
   >
     {{ text }}
-    <slot name="icon" />
+    <template v-if="isIcon">
+      <component :is="iconComponent" />
+    </template>
   </button>
 </template>
 
 <script>
+import CloseIcon from '@/components/icons/CloseIcon.vue';
 import validationRules from '@/utils/validationRules';
+import { capitalize } from 'vue';
 
 export default {
   name: 'AppButton',
+  components: {
+    CloseIcon,
+  },
   props: {
     text: {
       type: String,
@@ -28,9 +35,9 @@ export default {
     color: {
       type: String,
       required: true,
-      validate(value) {
-        const buttonColors = validationRules.button.colors;
-        return buttonColors.includes(value);
+      validator(value) {
+        const { colors } = validationRules.button;
+        return colors.includes(value);
       },
     },
     isFill: {
@@ -38,15 +45,25 @@ export default {
       required: false,
       default: false,
     },
-    isIcon: {
-      type: Boolean,
+    icon: {
+      type: String,
       required: false,
-      default: false,
+      default: null,
+      validator(value) {
+        const { icons } = validationRules.button;
+        return icons.includes(value);
+      },
     },
   },
   computed: {
     colorClass() {
       return `button--${this.color}`;
+    },
+    isIcon() {
+      return this.icon !== null;
+    },
+    iconComponent() {
+      return `${capitalize(this.icon)}Icon`;
     },
   },
 };
