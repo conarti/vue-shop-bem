@@ -25,6 +25,9 @@ export default {
     setGroups(state, payload) {
       state.groups = payload;
     },
+    updateProductsCurrency(state, currency) {
+      state.products = Products.changeCurrency(state.products, currency);
+    },
   },
   actions: {
     async fetchProducts({ commit }) {

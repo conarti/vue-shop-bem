@@ -21,11 +21,18 @@ export default class Products {
     const products = await fetch(apiEndpoints.products);
     return products.map((product) => ({
       ...product,
-      price: new Money(product.price, 'usd'),
+      price: new Money(product.price, Money.defaultApiCurrency),
     }));
   }
 
   static async fetchGroups() {
     return fetch(apiEndpoints.groups);
+  }
+
+  static changeCurrency(products, currency) {
+    return products.map((product) => ({
+      ...product,
+      price: product.price.exchangeTo(currency),
+    }));
   }
 }

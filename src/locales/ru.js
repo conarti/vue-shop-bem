@@ -13,6 +13,9 @@ export default {
       total: 'Итого',
       emptyMessage: 'Добавьте товары в корзину',
     },
+    currency: {
+      title: 'Валюта',
+    },
   },
   productsList: {
     product: {
