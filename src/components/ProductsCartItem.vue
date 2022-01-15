@@ -1,17 +1,18 @@
 <template>
   <tr class="table__row">
     <td class="table__cell">
-      Алгоритмы. Построение и анализ. Т. Кормен, Ч. Лейзерсон, Р. Ривест, К. Штайн.
+      {{ productData.name }}
     </td>
     <td class="table__cell">
-      <input
-        class="input input--maxw-50 input--text-center"
+      <AppInput
+        class="maxw-50px text-center"
         type="number"
-        value="3"
-      >
+        :value="product.count"
+        @value-changed="updateProductCountInCart($event)"
+      />
     </td>
     <td class="table__cell">
-      157.55 руб.
+      {{ productData.price }}
     </td>
     <td class="table__cell">
       <button class="button button--pink button--icon">
@@ -38,7 +39,32 @@
 </template>
 
 <script>
+import AppInput from '@/components/AppInput.vue';
+
 export default {
   name: 'ProductsCartItem',
+  components: {
+    AppInput,
+  },
+  props: {
+    product: {
+      type: Object,
+      required: true,
+    },
+  },
+  computed: {
+    productData() {
+      const productId = this.product.id;
+      return this.$store.getters['products/getProductById'](productId);
+    },
+  },
+  methods: {
+    updateProductCountInCart(count) {
+      this.$store.commit('cart/setProductCount', {
+        id: this.product.id,
+        count,
+      });
+    },
+  },
 };
 </script>

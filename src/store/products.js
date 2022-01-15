@@ -12,6 +12,7 @@ export default {
     groups: (state) => state.groups,
     getGroupProducts: (state) => (groupId) => state.products
       .filter((product) => product.group === groupId),
+    getProductById: (state) => (id) => state.products.find((product) => product.id === id),
   },
   mutations: {
     setProducts(state, payload) {

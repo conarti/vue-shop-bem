@@ -1,6 +1,10 @@
 <template>
   <app-card :title="$t('sections.cart.title')">
-    <table class="table">
+    <AppLoading v-if="!isProductsLoaded" />
+    <table
+      v-else
+      class="table"
+    >
       <thead class="table__header">
         <tr class="table__row">
           <th
@@ -14,8 +18,9 @@
       </thead>
       <tbody>
         <ProductsCartItem
-          v-for="product in [1, 2, 3]"
-          :key="product"
+          v-for="product in products"
+          :key="product.id"
+          :product="product"
         />
       </tbody>
       <tfoot class="table__footer">
@@ -30,7 +35,7 @@
             class="table__cell table__cell--footer text-end"
             colspan="3"
           >
-            472.65 руб.
+            {{ totalCount }}
           </td>
         </tr>
       </tfoot>
@@ -40,12 +45,14 @@
 
 <script>
 import AppCard from '@/components/AppCard.vue';
+import AppLoading from '@/components/AppLoading.vue';
 import ProductsCartItem from '@/components/ProductsCartItem.vue';
 
 export default {
   name: 'ProductsCart',
   components: {
     AppCard,
+    AppLoading,
     ProductsCartItem,
   },
   data() {
@@ -56,6 +63,17 @@ export default {
         this.$t('sections.cart.columnTitles.price'),
       ],
     };
+  },
+  computed: {
+    isProductsLoaded() {
+      return this.$store.getters['products/isLoaded'];
+    },
+    totalCount() {
+      return this.$store.getters['cart/totalCount'];
+    },
+    products() {
+      return this.$store.getters['cart/products'];
+    },
   },
 };
 </script>
