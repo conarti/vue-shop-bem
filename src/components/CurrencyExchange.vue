@@ -5,7 +5,10 @@
       :options="selectOptions"
       @update-value="setCurrency($event)"
     />
-    <AppLoading v-else />
+    <AppLoading
+      v-else
+      height="35px"
+    />
   </app-card>
 </template>
 

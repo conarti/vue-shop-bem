@@ -1,6 +1,9 @@
 <template>
   <app-card :title="$t('sections.products.title')">
-    <AppLoading v-if="isProductsNotLoaded" />
+    <AppLoading
+      v-if="isProductsNotLoaded"
+      height="380px"
+    />
     <div
       v-else
       class="products-list"

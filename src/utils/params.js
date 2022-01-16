@@ -17,6 +17,9 @@ const params = {
   select: {
     optionKeys: ['text', 'value'],
   },
+  loading: {
+    defaultHeight: '100px',
+  },
   cartProductsLocalStorageKey: 'cart-products',
 };
 
