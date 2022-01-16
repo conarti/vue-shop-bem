@@ -14,7 +14,7 @@ export default {
   },
   computed: {
     messageText() {
-      return this.message === null ? this.$t('empty.defaultMessage') : this.message;
+      return this.message ?? this.$t('empty.defaultMessage');
     },
   },
 };
