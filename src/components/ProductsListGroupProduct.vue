@@ -21,8 +21,8 @@
 </template>
 
 <script>
-import AppButton from '@/components/AppButton.vue';
-import AppCard from '@/components/AppCard.vue';
+import AppButton from './AppButton.vue';
+import AppCard from './AppCard.vue';
 
 export default {
   name: 'ProductsListGroupProduct',

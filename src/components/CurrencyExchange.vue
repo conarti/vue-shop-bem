@@ -13,9 +13,9 @@
 </template>
 
 <script>
-import AppCard from '@/components/AppCard.vue';
-import AppLoading from '@/components/AppLoading.vue';
-import AppSelect from '@/components/AppSelect.vue';
+import AppCard from './AppCard.vue';
+import AppLoading from './AppLoading.vue';
+import AppSelect from './AppSelect.vue';
 
 export default {
   name: 'CurrencyExchange',

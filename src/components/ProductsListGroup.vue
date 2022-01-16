@@ -27,7 +27,7 @@
 </template>
 
 <script>
-import ProductsListGroupProduct from '@/components/ProductsListGroupProduct.vue';
+import ProductsListGroupProduct from './ProductsListGroupProduct.vue';
 
 export default {
   name: 'ProductsListGroup',

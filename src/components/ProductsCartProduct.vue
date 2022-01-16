@@ -27,11 +27,11 @@
 </template>
 
 <script>
-import Cart from '@/services/Cart';
-import AppButton from '@/components/AppButton.vue';
-import AppInput from '@/components/AppInput.vue';
-import AppTableRow from '@/components/AppTableRow.vue';
-import AppTableRowCell from '@/components/AppTableRowCell.vue';
+import Cart from '../services/Cart';
+import AppButton from './AppButton.vue';
+import AppInput from './AppInput.vue';
+import AppTableRow from './AppTableRow.vue';
+import AppTableRowCell from './AppTableRowCell.vue';
 
 export default {
   name: 'ProductsCartProduct',

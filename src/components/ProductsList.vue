@@ -18,9 +18,9 @@
 </template>
 
 <script>
-import AppCard from '@/components/AppCard.vue';
-import AppLoading from '@/components/AppLoading.vue';
-import ProductsListGroup from '@/components/ProductsListGroup.vue';
+import AppCard from './AppCard.vue';
+import AppLoading from './AppLoading.vue';
+import ProductsListGroup from './ProductsListGroup.vue';
 
 export default {
   name: 'ProductsList',

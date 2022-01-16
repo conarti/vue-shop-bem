@@ -21,10 +21,10 @@
 </template>
 
 <script>
-import AppTableFooter from '@/components/AppTableFooter.vue';
-import AppTableHeader from '@/components/AppTableHeader.vue';
-import AppTableRow from '@/components/AppTableRow.vue';
-import AppTableRowCell from '@/components/AppTableRowCell.vue';
+import AppTableFooter from './AppTableFooter.vue';
+import AppTableHeader from './AppTableHeader.vue';
+import AppTableRow from './AppTableRow.vue';
+import AppTableRowCell from './AppTableRowCell.vue';
 
 export default {
   name: 'AppTable',

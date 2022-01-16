@@ -39,13 +39,13 @@
 </template>
 
 <script>
-import AppCard from '@/components/AppCard.vue';
-import AppEmpty from '@/components/AppEmpty.vue';
-import AppLoading from '@/components/AppLoading.vue';
-import AppTable from '@/components/AppTable.vue';
-import AppTableRow from '@/components/AppTableRow.vue';
-import AppTableRowCell from '@/components/AppTableRowCell.vue';
-import ProductsCartProduct from '@/components/ProductsCartProduct.vue';
+import AppCard from './AppCard.vue';
+import AppEmpty from './AppEmpty.vue';
+import AppLoading from './AppLoading.vue';
+import AppTable from './AppTable.vue';
+import AppTableRow from './AppTableRow.vue';
+import AppTableRowCell from './AppTableRowCell.vue';
+import ProductsCartProduct from './ProductsCartProduct.vue';
 
 export default {
   name: 'ProductsCart',

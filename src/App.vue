@@ -13,9 +13,9 @@
 </template>
 
 <script>
-import CurrencyExchange from '@/components/CurrencyExchange.vue';
-import ProductsCart from '@/components/ProductsCart.vue';
-import ProductsList from '@/components/ProductsList.vue';
+import CurrencyExchange from './components/CurrencyExchange.vue';
+import ProductsCart from './components/ProductsCart.vue';
+import ProductsList from './components/ProductsList.vue';
 
 export default {
   name: 'App',

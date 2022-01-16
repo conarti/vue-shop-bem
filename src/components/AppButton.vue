@@ -17,9 +17,9 @@
 </template>
 
 <script>
-import CloseIcon from '@/components/icons/CloseIcon.vue';
-import params from '@/utils/params';
 import { capitalize } from 'vue';
+import CloseIcon from './icons/CloseIcon.vue';
+import params from '../utils/params';
 
 export default {
   name: 'AppButton',
