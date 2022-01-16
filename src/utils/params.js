@@ -8,6 +8,7 @@ const params = {
       'h5',
       'h6',
     ],
+    defaultTitleComponent: 'h2',
   },
   button: {
     colors: ['pink'],

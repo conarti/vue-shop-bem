@@ -27,7 +27,7 @@ export default {
     titleComponent: {
       type: String,
       required: false,
-      default: 'h2',
+      default: params.card.defaultTitleComponent,
       validator(value) {
         const componentTypes = params.card.titleComponents;
         return componentTypes.includes(value);
