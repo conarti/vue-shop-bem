@@ -5,7 +5,7 @@
   >
     <p class="mb-3">
       {{ $t('productsList.product.countMessage') }}:
-      <span class="text-white">{{ productCount }}</span>
+      <span class="text-white">{{ $t('productsList.product.count', { rest: restProducts }) }}</span>
       <br>
       {{ $t('productsList.product.price') }}
       <span class="text-white">{{ product.price }}</span>
@@ -43,10 +43,11 @@ export default {
     isAddedToCart() {
       return this.$store.getters['cart/hasProduct'](this.productId);
     },
-    productCount() {
-      const cartCount = this.$store.getters['cart/getProductCount'](this.productId);
-      const rest = this.product.count - cartCount;
-      return this.$t('productsList.product.count', { rest });
+    productCartCount() {
+      return this.$store.getters['cart/getProductCount'](this.productId);
+    },
+    restProducts() {
+      return this.product.count - this.productCartCount;
     },
   },
   methods: {
