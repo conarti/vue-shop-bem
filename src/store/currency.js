@@ -11,12 +11,12 @@ export default {
     currencies: (state) => state.currencies,
   },
   mutations: {
-    change(state, currency) {
+    change: (state, currency) => {
       state.current = currency;
     },
   },
   actions: {
-    change({ commit }, currency) {
+    change: ({ commit }, currency) => {
       if (!Money.isValidCurrency(currency)) {
         throw new Error(`changeCurrency: unknown currency - ${currency}`);
       }

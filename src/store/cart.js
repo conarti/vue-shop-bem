@@ -23,7 +23,7 @@ export default {
   mutations: {
     setProducts: (state, payload) => {
       state.products = payload;
-      Cart.saveToStorage(payload);
+      Cart.saveToStorage(state.products);
     },
     setProductCount: (state, { id, count }) => {
       state.products = Cart.updateProduct({ id, count }, state.products);

@@ -10,17 +10,17 @@ export default class Money {
     },
   }
 
+  constructor(value, currency) {
+    this.value = value;
+    this.currency = currency;
+  }
+
   static getCurrencies() {
     return Object.keys(this.rates);
   }
 
   static isValidCurrency(currency) {
     return this.getCurrencies().includes(currency);
-  }
-
-  constructor(value, currency) {
-    this.value = value;
-    this.currency = currency;
   }
 
   exchangeTo(newCurrency) {
