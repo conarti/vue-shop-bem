@@ -1,67 +1,79 @@
 <template>
-  <tr class="table__row">
-    <td class="table__cell">
-      {{ productData.name }}
-    </td>
-    <td class="table__cell">
+  <app-table-row>
+    <app-table-row-cell>
+      {{ product.name }}
+    </app-table-row-cell>
+    <app-table-row-cell>
       <AppInput
+        v-model="count"
         class="maxw-50px text-center"
         type="number"
         :min="1"
-        :max="productMaxCount"
-        :value="product.count"
-        @value-changed="updateProductCountInCart($event)"
+        :max="stockBalance"
+        @update:model-value="updateProductCountInCart($event)"
       />
-    </td>
-    <td class="table__cell">
-      {{ productData.price }}
-    </td>
-    <td class="table__cell">
+    </app-table-row-cell>
+    <app-table-row-cell>
+      {{ product.price }}
+    </app-table-row-cell>
+    <app-table-row-cell>
       <AppButton
         color="pink"
         icon="close"
         @click="removeProductFromCart"
       />
-    </td>
-  </tr>
+    </app-table-row-cell>
+  </app-table-row>
 </template>
 
 <script>
 import AppButton from '@/components/AppButton.vue';
 import AppInput from '@/components/AppInput.vue';
+import AppTableRow from '@/components/AppTableRow.vue';
+import AppTableRowCell from '@/components/AppTableRowCell.vue';
 
 export default {
   name: 'ProductsCartProduct',
   components: {
     AppButton,
     AppInput,
+    AppTableRow,
+    AppTableRowCell,
   },
   props: {
-    product: {
-      type: Object,
+    id: {
+      type: String,
       required: true,
     },
   },
+  data() {
+    return {
+      count: null,
+    };
+  },
   computed: {
-    productId() {
-      return this.product.id;
+    product() {
+      return this.$store.getters['products/getProductById'](this.id);
     },
-    productData() {
-      return this.$store.getters['products/getProductById'](this.productId);
+    cartCount() {
+      return this.$store.getters['cart/getProductCount'](this.id);
     },
-    productMaxCount() {
-      return this.productData.count;
+    stockBalance() {
+      return this.product.count;
     },
+  },
+  created() {
+    this.count = this.cartCount;
   },
   methods: {
     updateProductCountInCart(count) {
       this.$store.commit('cart/setProductCount', {
-        id: this.productId,
+        id: this.id,
         count,
       });
     },
     removeProductFromCart() {
-      this.$store.commit('cart/removeProduct', this.productId);
+      this.$store.commit('cart/removeProduct', this.id);
     },
   },
 };

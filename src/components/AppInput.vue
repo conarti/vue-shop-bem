@@ -2,7 +2,7 @@
   <input
     class="input"
     :type="type"
-    :value="value"
+    :value="modelValue"
     :min="min"
     :max="max"
     @input="updateValue($event)"
@@ -13,7 +13,7 @@
 export default {
   name: 'AppInput',
   props: {
-    value: {
+    modelValue: {
       type: [String, Number],
       required: true,
     },
@@ -33,21 +33,13 @@ export default {
       default: null,
     },
   },
-  emits: ['value-changed'],
+  emits: {
+    'update:modelValue': (value) => typeof value === 'string' || typeof value === 'number',
+  },
   methods: {
     updateValue(event) {
-      const isNumberType = this.type.toLowerCase() === 'number';
-      let { value } = event.target;
-      if (isNumberType) {
-        if (value < this.min) {
-          value = this.min;
-        }
-        if (value > this.max) {
-          value = this.max;
-        }
-        value = parseFloat(value);
-      }
-      this.$emit('value-changed', value);
+      const { value } = event.target;
+      this.$emit('update:modelValue', value);
     },
   },
 };

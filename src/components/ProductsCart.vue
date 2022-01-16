@@ -12,8 +12,9 @@
       <template #tbody>
         <ProductsCartProduct
           v-for="product in cartProducts"
+          :id="product.id"
           :key="product.id"
-          :product="product"
+          :cart-count="product.count"
         />
       </template>
       <template #tfoot>
