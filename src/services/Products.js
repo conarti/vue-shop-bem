@@ -35,4 +35,17 @@ export default class Products {
       price: product.price.exchangeTo(currency),
     }));
   }
+
+  static getGroupProducts(groupId, products) {
+    return products.filter((product) => product.group === groupId);
+  }
+
+  static getProduct(id, products) {
+    return products.find((product) => product.id === id);
+  }
+
+  static getCount(id, products) {
+    const product = this.getProduct(id, products);
+    return product.count;
+  }
 }
