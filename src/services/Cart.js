@@ -56,4 +56,14 @@ export default class Cart {
     }
     return 0;
   }
+
+  static getFormattedProductCount(count, maxCount) {
+    if (count < 1 || count instanceof String) {
+      return 1;
+    }
+    if (count > maxCount) {
+      return maxCount;
+    }
+    return count;
+  }
 }

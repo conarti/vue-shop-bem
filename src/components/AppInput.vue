@@ -40,6 +40,7 @@ export default {
     updateValue(event) {
       const { value } = event.target;
       this.$emit('update:modelValue', value);
+      this.$forceUpdate();
     },
   },
 };

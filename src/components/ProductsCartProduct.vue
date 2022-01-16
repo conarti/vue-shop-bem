@@ -10,7 +10,7 @@
         type="number"
         :min="1"
         :max="stockBalance"
-        @update:model-value="updateProductCountInCart($event)"
+        @update:model-value="updateProductCountInCart"
       />
     </app-table-row-cell>
     <app-table-row-cell>
@@ -27,6 +27,7 @@
 </template>
 
 <script>
+import Cart from '@/services/Cart';
 import AppButton from '@/components/AppButton.vue';
 import AppInput from '@/components/AppInput.vue';
 import AppTableRow from '@/components/AppTableRow.vue';
@@ -66,10 +67,11 @@ export default {
     this.count = this.cartCount;
   },
   methods: {
-    updateProductCountInCart(count) {
+    updateProductCountInCart() {
+      this.count = Cart.getFormattedProductCount(this.count, this.stockBalance);
       this.$store.commit('cart/setProductCount', {
         id: this.id,
-        count,
+        count: this.count,
       });
     },
     removeProductFromCart() {
