@@ -2,7 +2,7 @@
   <app-card :title="$t('sections.currency.title')">
     <AppSelect
       v-if="isProductsLoaded"
-      :options="selectOptions"
+      :options="optionsOfSelect"
       @update-value="setCurrency($event)"
     />
     <AppLoading
@@ -34,7 +34,7 @@ export default {
     ...mapGetters('products', {
       isProductsLoaded: 'isLoaded',
     }),
-    selectOptions() {
+    optionsOfSelect() {
       return this.currencies.map((currency) => ({ text: currency.toUpperCase(), value: currency }));
     },
   },
