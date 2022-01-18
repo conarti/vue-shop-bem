@@ -27,6 +27,7 @@
 </template>
 
 <script>
+import { mapGetters } from 'vuex';
 import Cart from '../services/Cart';
 import AppButton from './AppButton.vue';
 import AppInput from './AppInput.vue';
@@ -53,11 +54,13 @@ export default {
     };
   },
   computed: {
+    ...mapGetters('products', ['getProductById']),
+    ...mapGetters('cart', ['getProductCount']),
     product() {
-      return this.$store.getters['products/getProductById'](this.id);
+      return this.getProductById(this.id);
     },
     cartCount() {
-      return this.$store.getters['cart/getProductCount'](this.id);
+      return this.getProductCount(this.id);
     },
     stockBalance() {
       return this.product.count;

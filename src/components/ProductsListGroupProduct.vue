@@ -21,6 +21,7 @@
 </template>
 
 <script>
+import { mapGetters } from 'vuex';
 import AppButton from './AppButton.vue';
 import AppCard from './AppCard.vue';
 
@@ -37,14 +38,18 @@ export default {
     },
   },
   computed: {
+    ...mapGetters('cart', {
+      hasProductInCart: 'hasProduct',
+      getProductCount: 'getProductCount',
+    }),
     productId() {
       return this.product.id;
     },
     isAddedToCart() {
-      return this.$store.getters['cart/hasProduct'](this.productId);
+      return this.hasProductInCart(this.productId);
     },
     productCartCount() {
-      return this.$store.getters['cart/getProductCount'](this.productId);
+      return this.getProductCount(this.productId);
     },
     restProducts() {
       return this.product.count - this.productCartCount;

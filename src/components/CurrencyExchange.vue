@@ -13,6 +13,7 @@
 </template>
 
 <script>
+import { mapActions, mapGetters } from 'vuex';
 import AppCard from './AppCard.vue';
 import AppLoading from './AppLoading.vue';
 import AppSelect from './AppSelect.vue';
@@ -30,20 +31,20 @@ export default {
     };
   },
   computed: {
+    ...mapGetters('products', {
+      isProductsLoaded: 'isLoaded',
+    }),
     selectOptions() {
       return this.currencies.map((currency) => ({ text: currency.toUpperCase(), value: currency }));
-    },
-    isProductsLoaded() {
-      return this.$store.getters['products/isLoaded'];
     },
   },
   created() {
     this.currencies = this.$store.getters['currency/currencies'];
   },
   methods: {
-    setCurrency(currency) {
-      this.$store.dispatch('currency/change', currency);
-    },
+    ...mapActions('currency', {
+      setCurrency: 'change',
+    }),
   },
 };
 </script>

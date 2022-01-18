@@ -27,6 +27,7 @@
 </template>
 
 <script>
+import { mapGetters } from 'vuex';
 import ProductsListGroupProduct from './ProductsListGroupProduct.vue';
 
 export default {
@@ -46,11 +47,12 @@ export default {
     };
   },
   computed: {
+    ...mapGetters('products', ['getGroupProducts']),
     buttonIconSymbol() {
       return this.showed ? '–' : '+';
     },
     groupProducts() {
-      return this.$store.getters['products/getGroupProducts'](this.group.id);
+      return this.getGroupProducts(this.group.id);
     },
     isShowed() {
       return this.showed;

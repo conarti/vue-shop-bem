@@ -1,6 +1,6 @@
 <template>
   <app-card :title="$t('sections.cart.title')">
-    <AppLoading v-if="isProductsNotLoaded" />
+    <AppLoading v-if="!isProductsLoaded" />
     <AppEmpty
       v-else-if="isEmpty"
       :message="$t('sections.cart.emptyMessage')"
@@ -39,6 +39,7 @@
 </template>
 
 <script>
+import { mapGetters } from 'vuex';
 import AppCard from './AppCard.vue';
 import AppEmpty from './AppEmpty.vue';
 import AppLoading from './AppLoading.vue';
@@ -68,15 +69,13 @@ export default {
     };
   },
   computed: {
-    isProductsNotLoaded() {
-      return !this.$store.getters['products/isLoaded'];
-    },
-    totalCount() {
-      return this.$store.getters['cart/totalCount'];
-    },
-    cartProducts() {
-      return this.$store.getters['cart/products'];
-    },
+    ...mapGetters('cart', {
+      totalCount: 'totalCount',
+      cartProducts: 'products',
+    }),
+    ...mapGetters('products', {
+      isProductsLoaded: 'isLoaded',
+    }),
     isEmpty() {
       return this.cartProducts.length === 0;
     },

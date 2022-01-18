@@ -1,11 +1,7 @@
 <template>
   <app-card :title="$t('sections.products.title')">
-    <AppLoading
-      v-if="isProductsNotLoaded"
-      height="380px"
-    />
     <div
-      v-else
+      v-if="isProductsLoaded"
       class="products-list"
     >
       <ProductsListGroup
@@ -14,10 +10,15 @@
         :group="group"
       />
     </div>
+    <AppLoading
+      v-else
+      height="380px"
+    />
   </app-card>
 </template>
 
 <script>
+import { mapGetters } from 'vuex';
 import AppCard from './AppCard.vue';
 import AppLoading from './AppLoading.vue';
 import ProductsListGroup from './ProductsListGroup.vue';
@@ -30,15 +31,13 @@ export default {
     ProductsListGroup,
   },
   computed: {
-    isProductsNotLoaded() {
-      return !this.$store.getters['products/isLoaded'];
-    },
-    groups() {
-      return this.$store.getters['products/groups'];
-    },
+    ...mapGetters('products', {
+      isProductsLoaded: 'isLoaded',
+      groups: 'groups',
+    }),
   },
   mounted() {
-    if (this.isProductsNotLoaded) {
+    if (!this.isProductsLoaded) {
       this.$store.dispatch('products/fetchAll');
     }
   },
