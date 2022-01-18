@@ -43,8 +43,8 @@
   &__group-products {
     display: grid;
     grid-template-columns: 1fr;
-    align-items: start;
     gap: $products-group-items-gutter;
+    align-items: start;
 
     @include media-breakpoint-up(md) {
       grid-template-columns: repeat(2, 1fr);

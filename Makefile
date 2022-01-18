@@ -9,3 +9,6 @@ build:
 
 lint:
 	npm run lint
+
+stylelint:
+	npx stylelint ./src/**/*
