@@ -23,7 +23,7 @@
         :key="product.id"
         :count="product.count"
         :name="product.name"
-        :price="product.price"
+        :price="product.price.toString()"
       />
     </div>
   </div>

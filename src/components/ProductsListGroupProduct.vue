@@ -37,7 +37,7 @@ export default {
   },
   props: {
     count: {
-      type: String,
+      type: Number,
       required: true,
     },
     id: {
