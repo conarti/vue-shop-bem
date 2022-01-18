@@ -18,21 +18,7 @@
         />
       </template>
       <template #tfoot>
-        <app-table-row>
-          <app-table-row-cell
-            is-footer-cell
-            colspan="1"
-          >
-            {{ $t('sections.cart.total') }}
-          </app-table-row-cell>
-          <app-table-row-cell
-            class="text-end"
-            is-footer-cell
-            colspan="3"
-          >
-            {{ totalCount }}
-          </app-table-row-cell>
-        </app-table-row>
+        <ProductsCartTotal />
       </template>
     </app-table>
   </app-card>
@@ -44,9 +30,8 @@ import AppCard from './AppCard.vue';
 import AppEmpty from './AppEmpty.vue';
 import AppLoading from './AppLoading.vue';
 import AppTable from './AppTable.vue';
-import AppTableRow from './AppTableRow.vue';
-import AppTableRowCell from './AppTableRowCell.vue';
 import ProductsCartProduct from './ProductsCartProduct.vue';
+import ProductsCartTotal from './ProductsCartTotal.vue';
 
 export default {
   name: 'ProductsCart',
@@ -55,9 +40,8 @@ export default {
     AppEmpty,
     AppLoading,
     AppTable,
-    AppTableRow,
-    AppTableRowCell,
     ProductsCartProduct,
+    ProductsCartTotal,
   },
   data() {
     return {
@@ -70,7 +54,6 @@ export default {
   },
   computed: {
     ...mapGetters('cart', {
-      totalCount: 'totalCount',
       cartProducts: 'products',
     }),
     ...mapGetters('products', {
