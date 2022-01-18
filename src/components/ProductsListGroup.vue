@@ -5,16 +5,16 @@
   >
     <button
       class="products-list__group-name"
-      :class="{ 'products-list__group-name--active': isShowed }"
-      @click="toggleVisibility"
+      :class="{ 'products-list__group-name--active': isGroupExpanded }"
+      @click="toggleProductsVisibility"
     >
-      {{ group.name }}
+      {{ name }}
       <span class="products-list__group-name-icon">
-        {{ buttonIconSymbol }}
+        {{ groupNameButtonIcon }}
       </span>
     </button>
     <div
-      v-if="isShowed"
+      v-if="isGroupExpanded"
       class="products-list__group-products"
     >
       <ProductsListGroupProduct
@@ -36,34 +36,38 @@ export default {
     ProductsListGroupProduct,
   },
   props: {
-    group: {
-      type: Object,
+    name: {
+      type: String,
+      required: true,
+    },
+    id: {
+      type: String,
       required: true,
     },
   },
   data() {
     return {
-      showed: false,
+      groupExpanded: false,
     };
   },
   computed: {
     ...mapGetters('products', ['getGroupProducts']),
-    buttonIconSymbol() {
-      return this.showed ? '–' : '+';
+    groupNameButtonIcon() {
+      return this.groupExpanded ? '–' : '+';
     },
     groupProducts() {
-      return this.getGroupProducts(this.group.id);
+      return this.getGroupProducts(this.id);
     },
-    isShowed() {
-      return this.showed;
+    isGroupExpanded() {
+      return this.groupExpanded;
     },
     hasProducts() {
       return this.groupProducts.length > 0;
     },
   },
   methods: {
-    toggleVisibility() {
-      this.showed = !this.showed;
+    toggleProductsVisibility() {
+      this.groupExpanded = !this.groupExpanded;
     },
   },
 };

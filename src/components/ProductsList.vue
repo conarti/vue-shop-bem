@@ -6,8 +6,9 @@
     >
       <ProductsListGroup
         v-for="group in groups"
+        :id="group.id"
         :key="group.id"
-        :group="group"
+        :name="group.name"
       />
     </div>
     <AppLoading
