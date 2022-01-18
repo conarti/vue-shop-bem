@@ -19,8 +19,11 @@
     >
       <ProductsListGroupProduct
         v-for="product in groupProducts"
+        :id="product.id"
         :key="product.id"
-        :product="product"
+        :count="product.count"
+        :name="product.name"
+        :price="product.price"
       />
     </div>
   </div>

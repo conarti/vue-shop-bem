@@ -20,7 +20,7 @@ export default {
   productsList: {
     product: {
       countMessage: 'Остаток',
-      count: '{rest} шт.',
+      count: '{count} шт.',
       price: 'Стоимость',
       buyBtn: 'Купить',
     },

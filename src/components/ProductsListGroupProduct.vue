@@ -1,14 +1,18 @@
 <template>
   <app-card
     title-component="h4"
-    :title="product.name"
+    :title="name"
   >
     <p class="mb-3">
       {{ $t('productsList.product.countMessage') }}:
-      <span class="text-white">{{ $t('productsList.product.count', { rest: restProducts }) }}</span>
+      <span class="text-white">
+        {{ $t('productsList.product.count', { count: stockProductsLeft }) }}
+      </span>
       <br>
       {{ $t('productsList.product.price') }}
-      <span class="text-white">{{ product.price }}</span>
+      <span class="text-white">
+        {{ price }}
+      </span>
     </p>
     <AppButton
       color="pink"
@@ -32,8 +36,20 @@ export default {
     AppCard,
   },
   props: {
-    product: {
-      type: Object,
+    count: {
+      type: String,
+      required: true,
+    },
+    id: {
+      type: String,
+      required: true,
+    },
+    name: {
+      type: String,
+      required: true,
+    },
+    price: {
+      type: String,
       required: true,
     },
   },
@@ -42,17 +58,14 @@ export default {
       hasProductInCart: 'hasProduct',
       getProductCount: 'getProductCount',
     }),
-    productId() {
-      return this.product.id;
-    },
     isAddedToCart() {
-      return this.hasProductInCart(this.productId);
+      return this.hasProductInCart(this.id);
     },
     productCartCount() {
-      return this.getProductCount(this.productId);
+      return this.getProductCount(this.id);
     },
-    restProducts() {
-      return this.product.count - this.productCartCount;
+    stockProductsLeft() {
+      return this.count - this.productCartCount;
     },
   },
   methods: {
@@ -60,7 +73,7 @@ export default {
       if (this.isAddedToCart) {
         return;
       }
-      this.$store.commit('cart/addProduct', this.productId);
+      this.$store.commit('cart/addProduct', this.id);
     },
   },
 };
